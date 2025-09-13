@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@689&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@100..900&family=Story+Script&display=swap');
+
+/* Notification box with glass effect */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification.hide {
+    filter: brightness(0%);
+}
+
+
+.notification2 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification2.show {
+    opacity: 1;
+}
+
+.notification2.hide {
+    filter: brightness(0%);
+}
+
+
+.notification3 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification3.show {
+    opacity: 1;
+}
+
+.notification3.hide {
+    filter: brightness(0%);
+}
+
+.notification4 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification4.show {
+    opacity: 1;
+}
+
+.notification4.hide {
+    filter: brightness(0%);
+}
+
+.notification5 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification5.show {
+    opacity: 1;
+}
+
+.notification5.hide {
+    filter: brightness(0%);
+}
+
+.notification6 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification6.show {
+    opacity: 1;
+}
+
+.notification6.hide {
+    filter: brightness(0%);
+}
+
+.notification7 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification7.show {
+    opacity: 1;
+}
+
+.notification7.hide {
+    filter: brightness(0%);
+}

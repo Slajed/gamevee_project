@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/pages/authenticate_pages/login.css"> <!-- reuse same CSS -->
+  <title>Sign Up - GameVee</title>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Create your GameVee Account</h2>
+      <form id="signup-form">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="signup-email" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="signup-password" placeholder="Password" required>
+        </div>
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="signup-name" placeholder="Your name" required>
+        </div>
+        <div class="input-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="signup-dob" required>
+        </div>
+        <div class="input-group">
+          <label for="info">About You</label>
+          <textarea id="signup-info" placeholder="Write something about you"></textarea>
+        </div>
+        <button type="submit" class="login-btn">Sign Up</button>
+      </form>
+      <div class="signup-link">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification">
+    THIS EMAIL ADDRESS IS ALREADY REGISTERED.
+  </div>
+
+  <div class="notification2" id="notification2">
+    LOGGING IN YOU...
+  </div>
+
+  <script>
+  document.getElementById("signup-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+    const name = document.getElementById("signup-name").value;
+    const dob = document.getElementById("signup-dob").value;
+    const info = document.getElementById("signup-info").value;
+
+    if (users.some(u => u.email === email)) {
+      const notification = document.getElementById("notification");
+      notification.classList.add("show");
+      setTimeout(() => notification.classList.remove("show"), 3000);
+      return;
+    }
+
+    const newUser = { 
+      email, 
+      password, 
+      name,            // full name
+      dob, 
+      info, 
+      games: [], 
+      created: new Date().toISOString(), 
+      status: "Active" 
+    };
+
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Your account has been created successfully! Click 'Ok' to Login.");
+    window.location.href = "login.html";
+  });
+</script>
+</body>
+</html>

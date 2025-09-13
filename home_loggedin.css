@@ -1,0 +1,303 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+    background: linear-gradient(120deg, #181c3a 0%, #380463 20%, #232b5c 30%, #3a1c4a 100%);
+    background-size: 300% 300%;
+    animation: gradientBG 18s ease-in-out infinite;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;   /* disable highlighting */
+}
+
+.box {
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    height: 80px;
+    margin: -10px -100px;
+    width: 1450px;
+
+    /*blur, and designing effects*/
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+}
+
+/* Actibve Nav Page effect */
+
+.active-underline {
+    display: block;
+    position: absolute;
+    left: 10%;
+    bottom: -6px;
+    width: 80%;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 0 6px #007aff44;
+    pointer-events: none;
+    transition: width 0.2s;
+}
+
+/*effect*/
+
+nav .logo {
+    height: 70px;
+    left: 40px;
+    position: absolute;
+    top: 5px;
+    width: 70px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+nav .logo_text {
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    left: 110px;
+    top: 15px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+nav .logo_text_2 {
+    font-family: "Outfit", sans-serif;
+    font-size: 17px;
+    position: absolute;
+    color: white;
+    left: 110px;
+    z-index: 1;
+    top: 40px;
+    cursor: pointer;
+}
+
+nav .logo_text3 {
+    font-family: "Outfit", sans-serif;
+    font-size: 1px;
+    position: absolute;
+    color: #007aff;
+    left: 120px;
+    z-index: 1;
+    top: 5px;cursor: pointer;
+}
+
+nav a {
+    display: flex;
+    filter: brightness(100%); 
+    font-family: "Outfit", sans-serif;
+    font-weight: 700;
+    transition: filter 0.3s ease-in-out;
+    z-index: 1;
+}
+
+nav a:hover {
+    filter: brightness(60%);
+}
+
+nav a.home2 {
+    background: transparent;
+    color: white;
+    left: 500px;
+    position: absolute;
+    text-decoration: none;
+    top: 25px;
+}
+
+nav a.games {
+    background: transparent;
+    color: white;
+    left: 600px;
+    position: absolute;
+    text-decoration: none;
+    top: 25px;
+}
+
+nav a.premium {
+    background: linear-gradient(120deg, #ffd700 0%, #ff8c00 40%, #ff00cc 100%);
+    color: white;
+    font-weight: 900;
+    letter-spacing: 2px;
+    border-radius: 12px;
+    box-shadow: 0 0 100px #ffd70088;
+    padding: 8px;
+    position: absolute;
+    left: 700px;
+    top: 18px;
+    text-decoration: none;
+    animation: premiumGlow 2.5s linear infinite;
+    transition: filter 0.3s;
+}
+
+    .slider .slides .slide .game1 {
+        width: 700px;
+        color: white;
+    }
+
+    .slider .slides .slide .game2 {
+        width: 700px;
+    }
+
+    .slider .slides .slide .game3 {
+        width: 700px;
+    }
+
+    .slider .slides .slide .game4 {
+        width: 700px;
+    }
+
+    .slider {
+      position: relative;
+      width: 700px;
+      max-width: 1200px;
+      height: 500px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.7s ease-in-out;
+      width: 500%;
+      height: 100%;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Overlay content */
+    .slide-content {
+      position: absolute;
+      bottom: 40px;
+      left: 50px;
+      font-family: "Outfit", sans-serif;
+      max-width: 500px;
+      background: rgba(
+        0, 0, 0, 0.55);
+      padding: 20px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    .slide-content h2 {
+      font-size: 28px;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .slide-content p {
+      font-size: 16px;
+      color: white;
+      opacity: 0.9;
+    }
+
+    .slide-content button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #007aff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .slide-content button:hover {
+      background: #ff1e00;
+    }
+
+    /* Arrows */
+    .arrow {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.3s;
+    }
+    .arrow.left { left: 20px;}
+    .arrow.right { right: 20px; }
+
+    /* Dots */
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .dot.active {
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .slider { height: 350px; }
+      .slide-content {
+        bottom: 20px; left: 20px;
+        max-width: 90%;
+        padding: 15px;
+      }
+      .slide-content h2 { font-size: 20px; }
+      .slide-content p { font-size: 14px; }
+    }
+
+    
+    @keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes premiumGlow {
+    0% {
+        box-shadow: 0 0 12px #ffd70088, 0 0 0px #ff00cc44;
+        filter: brightness(1.1);
+    }
+    50% {
+        box-shadow: 0 0 24px #ff8c00cc, 0 0 12px #ff00cc88;
+        filter: brightness(1.3);
+    }
+    100% {
+        box-shadow: 0 0 12px #ffd70088, 0 0 0px #ff00cc44;
+        filter: brightness(1.1);
+    }
+}

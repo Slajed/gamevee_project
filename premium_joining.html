@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/assets//ChatGPT Image Sep 4, 2025, 03_25_44 PM.png">
+  <title>Confirm Subscription - GameVEE</title>
+  <style>
+    body {
+      font-family: "Outfit", sans-serif;
+      background: linear-gradient(120deg, #181c3a 0%, #380463 20%, #232b5c 30%, #3a1c4a 100%);
+      background-size: 300% 300%;
+      animation: gradientBG 18s ease-in-out infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #e0e0e0;
+    }
+    .card-form {
+      background: #1e1e1e;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-form h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #ffffff;
+    }
+    .section-title {
+      margin: 1.5rem 0 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      align-self: flex-start;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .form-group label {
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      color: #bbbbbb;
+    }
+    .form-group input, .form-group select {
+      width: 350px;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: none;
+      background: #2b2b2b;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: 2px solid #3f51b5;
+    }
+    .error {
+      color: #ff6b6b;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    .card-number-wrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .card-number-wrapper input {
+      flex: 1;
+    }
+    .card-icon {
+  width: 50px;
+  height: 30px;
+  margin-left: 10px;
+  background: #2b2b2b;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* crop if larger */
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* keeps proportions */
+  display: none;       /* hidden by default */
+}
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      background: #3f51b5;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 1.5rem;
+    }
+    .btn-submit:hover {
+      background: #5c6bc0;
+    }
+    .btn-submit a {
+      color: #fff;
+      text-decoration: none;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <form class="card-form" id="paymentForm" novalidate>
+    <h2>Payment Information</h2>
+
+    <div class="section-title">Card Information</div>
+    <div class="form-group">
+      <label for="cardholder">Name on Card</label>
+      <input type="text" id="cardholder" required>
+      <div class="error" id="cardholderError">Enter a valid name in English letters only.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="cardNumber">Card Number</label>
+      <div class="card-number-wrapper">
+        <input type="text" id="cardNumber" maxlength="19" required>
+        <div class="card-icon" id="cardIcon">
+          <img src="/assets/4375165_card_credit_logo_visa_icon.png" alt="visa">
+          <img src="/assets/345560_billing_credit card_mastercard_payment_shop_icon.png" alt="mastercard">
+          <img src="/assets/345580_american express_amex_billing_credit card_payment_icon.png" alt="amex">
+        </div>
+      </div>
+      <div class="error" id="cardNumberError">Invalid card number.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="expiry">Expiry Date (MM/YY)</label>
+      <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+      <div class="error" id="expiryError">Card expired or format is invalid.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="cvc">CVC / CID</label>
+      <input type="text" id="cvc" maxlength="4" required>
+      <div class="error" id="cvcError">Invalid CVC/CID.</div>
+    </div>
+
+    <div class="section-title">Billing Information</div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <div class="error" id="emailError">Enter a valid email address.</div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" required>
+      <div class="error" id="phoneError">Enter a valid phone number.</div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" id="address" required>
+      <div class="error" id="addressError">Enter your billing address.</div>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" id="city" required>
+      <div class="error" id="cityError">Enter your city.</div>
+    </div>
+    <div class="form-group">
+      <label for="state">State or Province</label>
+      <input type="text" id="state" required>
+      <div class="error" id="stateError">Enter your state or province.</div>
+    </div>
+    <div class="form-group">
+      <label for="zip">ZIP / Postal Code</label>
+      <input type="text" id="zip" required>
+      <div class="error" id="zipError">Enter a valid ZIP or postal code.</div>
+    </div>
+    <div class="form-group">
+      <label for="country">Country</label>
+      <select id="country" required>
+        <option value="">Select Country</option>
+        <option value="US">United States</option>
+        <option value="CA">Canada</option>
+        <option value="GB">United Kingdom</option>
+        <option value="AU">Australia</option>
+        <option value="DE">Germany</option>
+        <option value="FR">France</option>
+        <option value="IN">India</option>
+        <option value="JP">Japan</option>
+      </select>
+      <div class="error" id="countryError">Select your country.</div>
+    </div>
+
+    <button type="submit" class="btn-submit"><a href="/pages/authenticate_pages/home_loggedin_subscribed#1.html">Subscribe</a></button>
+  </form>
+
+  <script>
+    const cardNumber = document.getElementById('cardNumber');
+    const cardIcon = document.getElementById('cardIcon');
+
+    function detectCardType(number) {
+  if (/^3[47]/.test(number)) return 'amex';
+  if (/^4/.test(number)) return 'visa';
+  if (/^(5[1-5][0-9]{0,}|2(2[2-9][0-9]{0,}|[3-6][0-9]{0,}|7[01][0-9]{0,}|720[0-9]{0,}))$/.test(number))
+    return 'mastercard'; // 51–55 or 2221–2720
+  return '';
+}
+
+  cardNumber.addEventListener('input', () => {
+  const digits = cardNumber.value.replace(/\s+/g, '');
+  const type = detectCardType(digits);
+
+  // Hide all
+  cardIcon.querySelectorAll('img').forEach(img => img.style.display = 'none');
+
+  // Show matched
+  if (type) {
+    const icon = cardIcon.querySelector(`img[alt="${type}"]`);
+    if (icon) icon.style.display = 'block';
+  }
+
+  // Format input
+  cardNumber.value = cardNumber.value
+    .replace(/[^0-9]/g, '')
+    .replace(/(.{4})/g, '$1 ')
+    .trim();
+});
+
+
+
+    // Auto format expiry
+    const expiry = document.getElementById('expiry');
+    expiry.addEventListener('input', () => {
+      expiry.value = expiry.value.replace(/[^0-9]/g, '').replace(/(\d{2})(\d{1,2})/, '$1/$2');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard - GameVee</title>
+<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="/functions/CSS/deletionBox.css">
+<style>
+  /* Admins Section */
+  .admins-section {
+    margin-top: 30px;
+    padding: 15px;
+    background: #222;
+    border-radius: 10px;
+    color: white;
+  }
+  .admins-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .admins-section th, .admins-section td {
+    padding: 8px;
+    border: 1px solid #555;
+    text-align: left;
+    color: white;
+  }
+  .admins-section button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background: #5bc0de;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Spacing for all sections */
+  .games-section, .warnings-section, .admins-section {
+    margin-bottom: 30px;
+  }
+
+  /* Keep buttons styled */
+  .clear-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(209, 5, 5, 0.774);
+    color: white;
+    cursor: pointer;
+  }
+
+  .clear-btn:hover {
+    background: rgba(231, 16, 16, 0.897);
+  }
+</style>
+</head>
+<body>
+<div class="admin-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li class="active">Games</li>
+      <a href="users_manager.html"><li>Users</li></a>
+      <li>Settings</li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <h1>Manage Games</h1>
+
+    <!-- Add Game Form -->
+    <form id="addGameForm" class="form-box">
+      <input type="text" id="gameTitle" placeholder="Game Title" required>
+      <input type="text" id="gameCategory" placeholder="Category (e.g. action)" required>
+      <input type="file" id="gameIcon" accept="image/*" required>
+      <button type="submit">Add Game</button>
+    </form>
+
+    <!-- Games Table -->
+    <div class="games-section">
+      <h2>Games</h2>
+      <table class="games-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Added</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="gamesList"></tbody>
+      </table>
+      <button class="clear-btn" id="clearGames">Delete All Games</button>
+    </div>
+
+    <!-- Warnings Section -->
+    <div class="warnings-section">
+      <h2>Login Warnings</h2>
+      <table class="warnings-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Reason</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="warningsList"></tbody>
+      </table>
+      <button class="clear-btn" id="clearWarnings">Clear Warnings</button>
+    </div>
+
+    <!-- Admins Section -->
+    <div class="admins-section">
+      <h2>Current Admins</h2>
+      <button id="toggleAdmins">Show/Hide Admins</button>
+      <table id="adminsTable" style="display:none;">
+        <thead>
+          <tr><th>Email</th><th>Password</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<!-- Modals -->
+<div class="boxDeleteWarnings" id="boxDeleteWarnings">
+  <h3>Are you sure you want to delete all warnings?</h3>
+  <button id="deleteWarningsConfirm">Delete</button>
+  <button id="deleteWarningsCancel">Cancel</button>
+</div>
+
+<div class="boxDeleteGames" id="boxDeleteGames">
+  <h3>Are you sure you want to delete all added games?</h3>
+  <button id="deleteGamesConfirm">Delete</button>
+  <button id="deleteGamesCancel">Cancel</button>
+</div>
+
+<div class="boxDeleteSingleGame" id="boxDeleteSingleGame">
+  <h3 id="deleteSingleGameText">Are you sure you want to delete this game?</h3>
+  <button id="deleteSingleGameConfirm">Delete</button>
+  <button id="deleteSingleGameCancel">Cancel</button>
+</div>
+
+<button id="logoutBtn">Logout</button>
+
+<script>
+  // Auth Check
+  window.addEventListener("DOMContentLoaded", () => {
+    const currentAdmin = JSON.parse(localStorage.getItem("currentAdmin"));
+    if (!currentAdmin) window.location.href = "admin_login.html";
+  });
+
+  // Logout
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("currentAdmin");
+    window.location.href = "admin_login.html";
+  });
+
+  // Admins array
+  const admins = [
+    { email: "sajed_manager@gamevee.com", password: "sajed@121212" },
+    { email: "ali@gamevee.com", password: "ali@121212" },
+    { email: "support@gamevee.com", password: "support_@121212" },
+  ];
+
+  // Load Admins
+  function loadAdmins() {
+    const tbody = document.querySelector("#adminsTable tbody");
+    tbody.innerHTML = "";
+    admins.forEach(a => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${a.email}</td><td>${a.password}</td>`;
+      tbody.appendChild(row);
+    });
+  }
+  document.getElementById("toggleAdmins").addEventListener("click", () => {
+    const table = document.getElementById("adminsTable");
+    table.style.display = table.style.display === "none" ? "table" : "none";
+  });
+
+  // Load Warnings
+  function loadWarnings() {
+    const warnings = JSON.parse(localStorage.getItem("warnings")) || [];
+    const tbody = document.getElementById("warningsList");
+    tbody.innerHTML = "";
+    warnings.forEach(w => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${w.email}</td><td>${w.reason}</td><td>${new Date(w.time).toLocaleString()}</td>`;
+      tbody.appendChild(row);
+    });
+  }
+
+  // Load Games
+  function loadGames() {
+    const games = JSON.parse(localStorage.getItem("games")) || [];
+    const tbody = document.getElementById("gamesList");
+    tbody.innerHTML = "";
+    games.forEach(g => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${g.title}</td><td>${g.category}</td><td>${new Date(g.added).toLocaleString()}</td>`;
+      tbody.appendChild(row);
+    });
+  }
+
+  // Delete Warnings
+  document.getElementById("clearWarnings").addEventListener("click", () => {
+    document.getElementById("boxDeleteWarnings").style.display = "flex";
+  });
+  document.getElementById("deleteWarningsConfirm").addEventListener("click", () => {
+    localStorage.removeItem("warnings");
+    loadWarnings();
+    document.getElementById("boxDeleteWarnings").style.display = "none";
+  });
+  document.getElementById("deleteWarningsCancel").addEventListener("click", () => {
+    document.getElementById("boxDeleteWarnings").style.display = "none";
+  });
+
+  // Delete Games
+  document.getElementById("clearGames").addEventListener("click", () => {
+    document.getElementById("boxDeleteGames").style.display = "flex";
+  });
+  document.getElementById("deleteGamesConfirm").addEventListener("click", () => {
+    localStorage.removeItem("games");
+    loadGames();
+    document.getElementById("boxDeleteGames").style.display = "none";
+  });
+  document.getElementById("deleteGamesCancel").addEventListener("click", () => {
+    document.getElementById("boxDeleteGames").style.display = "none";
+  });
+
+  // Initial Load
+  window.addEventListener("DOMContentLoaded", () => {
+    loadWarnings();
+    loadGames();
+    loadAdmins();
+  });
+
+</script>
+
+<script src="admin_panel.js"></script>
+</body>
+</html>

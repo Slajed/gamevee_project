@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pages/games_page/games.css">
+    <link rel="stylesheet" href="/functions/CSS/preventRightClick_.css">
+    <link rel="icon" type="image/png" href="/assets/ChatGPT_Image_Sep_4_2025_03_25_44_PM.png">
+    <title>Games - GameVee</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Categories</h2>
+        <button class="close-btn">✖</button>
+        
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="horror">Horror</button>
+        <button class="category-btn" data-category="action">Action</button>
+        <button class="category-btn" data-category="adventure">Adventure</button>
+        <button class="category-btn" data-category="puzzle">Puzzle</button>
+        <button class="category-btn" data-category="racing">Racing</button>
+        <button class="category-btn" data-category="multiplayer">Multiplayer</button>
+    </div>
+
+    <!-- Content -->
+    <div class="main-content">
+        <nav>
+            <div class="box"></div>
+
+            <h5 class="logo_text">Game</h5>
+            <h5 class="logo_text_2">VEE <span class="logo_text_3">.io</span></h5>
+
+            <a class="home" href="/pages/authenticate_pages/home_loggedin.html">Home</a>
+            <a class="games" href="/pages/games_page/games.html">Games</a>
+            <a class="premium" href="/pages/premium_page/premium.html">PREMIUM</a>
+
+            <button class="toggle-sidebar">☰</button>
+        </nav>
+
+        <div class="gamesContainer" id="gamesContainer"></div>
+    </div>
+
+    <div class="notification" id="notification">
+        PROTECTING OUR CONTENT, RIGHT-CLICK IS DISABLED ON THIS WEBSITE
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const gamesContainer = document.getElementById("gamesContainer");
+
+  let db;
+  const request = indexedDB.open("GameVeeDB", 1);
+
+  request.onsuccess = function (event) {
+    db = event.target.result;
+    loadGames();
+  };
+
+  request.onerror = function (event) {
+    console.error("IndexedDB error:", event.target.error);
+  };
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  function loadGames() {
+    const tx = db.transaction("games", "readonly");
+    const store = tx.objectStore("games");
+    const requestAll = store.getAll();
+
+    requestAll.onsuccess = function () {
+      const games = requestAll.result;
+      gamesContainer.innerHTML = "";
+
+      games.forEach((game) => {
+        const card = document.createElement("div");
+        card.classList.add("game-card");
+
+        // ✅ add attributes for filtering + sorting
+        if (game.category) {
+          card.setAttribute("data-category", game.category.toLowerCase());
+        }
+        if (game.added) {
+          card.setAttribute("data-added", game.added);
+        }
+
+        card.innerHTML = `
+          <img src="${game.icon}" alt="${game.title}">
+          <h3>${game.title}</h3>
+        `;
+        gamesContainer.appendChild(card);
+      });
+    };
+  }
+});
+</script>
+
+
+    <script src="/functions/preventRightClick.js"></script>
+    <script src="/functions/underlineActiveTab.js"></script>
+    <script src="/functions/games_display_filter.js"></script>
+</body>
+</html>

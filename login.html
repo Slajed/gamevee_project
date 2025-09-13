@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pages/authenticate_pages/login.css">
+    <link rel="stylesheet" href="/functions/CSS/preventRightClick_.css">
+    <link rel="icon" type="image/png" href="/assets//ChatGPT Image Sep 4, 2025, 03_25_44 PM.png">
+    <title>Login - GameVee</title>
+</head>
+<body>
+
+        <div class="login-container">
+        <div class="login-box">
+            <h2>Sign in to GameVee</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+            <div class="divider-text">or</div>
+            <div class="social-login">
+                <button class="social-btn apple">
+                    <img class="apple1" src="/assets/apple.svg" alt="Apple"> Sign in with Apple
+                </button>
+                <button class="social-btn google">
+                    <img class="google1" src="/assets/google.svg" alt="Google">      Sign in with Google
+                </button>
+                <button class="social-btn facebook">
+                    <img src="/assets/facebook.svg" alt="Facebook"> Sign in with Facebook
+                </button>
+            </div>
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+    PROTECTING OUR CONTENT, RIGHT-CLICK IS DISABLED ON THIS WEBSITE.
+    </div>
+
+    <div class="notification2" id="notification2">
+        Incorrect email address or password. Double-check if this email address is associated to an acocunt, or if this password is correct.
+    </div>
+
+    <div class="notification3" id="notification3">
+        LOGGING YOU IN...
+    </div>
+    
+    <div class="notification4" id="notification4">
+        This account has been banned. Contact sajedsigo2012@gmail.com for assistance.
+    </div>
+
+    </script>
+
+    <script src="/functions/preventRightClick.js"></script>
+    <script src="/functions/loginHandler.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets//ChatGPT Image Sep 4, 2025, 03_25_44 PM.png">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/pages/authenticate_pages/home_loggedin.css">
+    <link rel="stylesheet" href="/functions/CSS/preventRightClick_.css">
+    <title>Home - GameVee</title>
+</head>
+<body>
+    
+    <nav>
+        <img src="/assets/ChatGPT_Image_Sep_4__2025__03_11_13_PM-removebg-preview.png" alt="" class="logo">
+        <h5 class="logo_text">Game</h5>
+        <h5 class="logo_text_2">VEE <span class="logo_text_3">.io</span></h5>
+
+        <a class="home2" href="/pages/authenticate_pages/home_loggedin.html">Home</a>
+        <a class="games" href="/pages/games_page/games.html">Games</a>
+        <a class="premium" href="/pages//premium_page/premium.html">PREMIUM</a>
+
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="box"></div>
+
+    <div class="slider">
+    <div class="slides">
+      <div class="slide">
+        <img src="/assets/fall-guys-update.jpg" alt="Game 1" class="game1">
+        <div class="slide-content">
+          <h2>Fall Guys: Ultimate Knowckout</h2>
+          <p>Join the Ultimate Knockout event in Fall Guys Now!</p>
+          <button>Download</button>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/assets/EA-Sports-FC-26-Registration.jpg" alt="Game 2" class="game2">
+        <div class="slide-content">
+          <h2>EA: FC26</h2>
+          <p>Pre-Register for EA FC26 and get Exclusive Rewards upon the game realese!</p>
+          <button>Pre-Register</button>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/assets/pubg_4.0_update.webp" class="game3" alt="Game 3">
+        <div class="slide-content">
+          <h2>PUBG Mobile</h2>
+          <p>Don't miss the 4.0 update in PUBG Mobile!</p>
+          <button>Download</button>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/assets/tower_of_god_summer_party_event.jpg" class="game4" alt="Game 4">
+        <div class="slide-content">
+          <h2>Tower of God</h2>
+          <p>Don't miss the Summer Party with your favourite Tower of God heros!</p>
+          <button>Explore</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        PROTECTING OUR CONTENT, RIGHT-CLICK IS DISABLED ON THIS WEBSITE.
+    </div>
+
+    <!-- Add this logout button wherever appropriate in your current page -->
+    <button id="logoutBtn">Logout</button>
+    <!-- Add this logout button wherever appropriate in your current page -->
+
+    <script>
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+    const leftArrow = document.querySelector('.arrow.left');
+    const rightArrow = document.querySelector('.arrow.right');
+    let index = 0;
+    const total = dots.length;
+
+    function showSlide(i) {
+      slides.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[i].classList.add('active');
+    }
+
+    function nextSlide() {
+      index = (index + 1) % total;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      index = (index - 1 + total) % total;
+      showSlide(index);
+    }
+
+    // Auto-slide
+    let slideInterval = setInterval(nextSlide, 4000);
+
+    // Arrows
+    rightArrow.addEventListener('click', () => {
+      nextSlide();
+      resetInterval();
+    });
+    leftArrow.addEventListener('click', () => {
+      prevSlide();
+      resetInterval();
+    });
+
+    // Dots
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        showSlide(index);
+        resetInterval();
+      });
+    });
+
+    function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 4000);
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  let sessions = JSON.parse(localStorage.getItem("sessions")) || [];
+
+  // Find last active session for this user
+  let session = [...sessions].reverse().find(s => s.email === currentUser.email && !s.logout);
+  if (session) {
+    session.logout = new Date().toISOString();
+    session.duration = Math.floor((new Date(session.logout) - new Date(session.login)) / 60000) + " min";
+  }
+
+  localStorage.setItem("sessions", JSON.stringify(sessions));
+  localStorage.removeItem("currentUser");
+
+  // Redirect to login
+  window.location.href = "login.html";
+});
+
+
+    </script>
+
+    <script src="/functions/preventRightClick.js"></script>
+    <script src="/functions/underlineActiveTab.js"></script>
+</body>
+</html>

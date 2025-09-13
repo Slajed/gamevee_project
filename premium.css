@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@689&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@100..900&family=Story+Script&display=swap');
+
+body {
+    font-family: "Outfit", sans-serif;
+    background: linear-gradient(120deg, #181c3a 0%, #380463 20%, #232b5c 30%, #3a1c4a 100%);
+    background-size: 300% 300%;
+    animation: gradientBG 18s ease-in-out infinite;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;   /* disable highlighting */
+}
+
+/*billing toggle code*/
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+  gap: 0.4em;
+}
+
+.billing-label {
+  color: #bbb;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+
+.billing-label.active {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  background-color: #444;
+  transition: 0.4s;
+  border-radius: 24px;
+  transition: background 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  top: 1.5px;
+  background: #ffd700;
+  border-radius: 24px;
+  transition: transform 0.1s;
+}
+
+input:checked + .slider {
+  background: #444;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+  background: #ffd700;
+}
+
+/*end*/
+.most-popular-banner {
+  position: absolute;
+  top: -1.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ff5e62 0%, #ffd700 100%);
+  color: #23235b;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0.4em 1.2em;
+  border-radius: 1em;
+  border: 0.4em #ff5e62;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.15);
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+.most-popular-banner2 {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ff5e62 0%, #ffd700 100%);
+  color: #23235b;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0.4em 1.2em;
+  border-radius: 1em;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.15);
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+.most-popular-banner3 {
+  position: absolute;
+  top: -1.2em;
+  left: 60px;
+  background: linear-gradient(90deg, #ff5e62 0%, #ffd700 100%);
+  color: #23235b;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0.4em 1.2em;
+  border-radius: 1em;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.15);
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+
+.premium-plans {
+  background: linear-gradient(135deg, #23235b 0%, #3a1c71 100%);
+  padding: 3em 1em;
+  text-align: center;
+  color: #fff;
+}
+
+.premium-title {
+  font-size: 2.2em;
+  margin-bottom: 1.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.plans-container {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.plan-box {
+  background: rgba(34, 34, 68, 0.95);
+  border-radius: 1.5em;
+  box-shadow: 0 8px 32px 0 rgba(58,28,113,0.25);
+  padding: 2em 1.5em;
+  border: 2px solid #05b864;
+  min-width: 260px;
+  max-width: 320px;
+  transition: transform 0.4s, box-shadow 0.3s, border 0.3s;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.plan-box:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 16px 40px 0 rgba(255, 215, 0, 0.25), 0 4px 24px 0 rgba(58,28,113,0.35);
+  border: 2px solid #05b864;
+  z-index: 2;
+}
+
+.plan-box.popular {
+  border: 2px solid #ff5e62;
+  box-shadow: 0 8px 32px 0 rgba(255,94,98,0.25);
+}
+
+.plan-name {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.plan-price {
+  align-content: baseline;
+  justify-content: center;
+  font-size: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+.price {
+  color: #ffd700;
+  font-size: 1.5em;
+  margin-left: 0.45em;
+  margin-bottom: 1em;
+  font-weight: 900;
+}
+
+.per-month {
+  font-size: 0.6em;
+  color: #bbb;
+  margin-left: 0.4em;
+  margin-top: 1em;
+}
+
+.divider {
+  border: none;
+  border-top: 1.7px solid #444;
+  margin-left: 0.1em;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2em 0;
+  text-align: left;
+}
+
+.plan-features li {
+  margin-bottom: 1em;
+  font-size: 1.05em;
+  padding-left: 1em;
+  position: relative;
+}
+
+.plan-features li:before {
+  content: "✔";
+  color: #ffd700;
+  position: absolute;
+  left: 0;
+  font-size: 1em;
+}
+
+.select-plan a {
+  background: linear-gradient(90deg, #ff5e62 0%, #ffd700 100%);
+  color: #23235b;
+  border: none;
+  border-radius: 2em;
+  padding: 0.7em 2em;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.12);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+}
+
+.select-plan:hover {
+  background: linear-gradient(90deg, #ffd700 0%, #ff5e62 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255,94,98,0.18);
+}

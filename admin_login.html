@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login - GameVee</title>
+  <link rel="stylesheet" href="/functions/CSS/preventRightClick_.css">
+  <link rel="stylesheet" href="admin_login.css">
+</head>
+<body>
+  <div class="admin-login-container">
+    <div class="login-box">
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm">
+        <div class="input-group">
+          <label for="adminEmail">Email</label>
+          <input type="email" id="adminEmail" required>
+        </div>
+        <div class="input-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      <p class="note">⚠️ Admins Login only. Unauthorized logins will be logged.</p>
+    </div>
+  </div>
+
+  <div class="notification5" id="notification5">
+    Login Failed. Invalid or incorrect credentials.
+  </div>
+
+  <div class="notification6" id="notification6">
+    Login Successful!
+  </div>
+
+  <div class="notification7" id="notification7">
+    Email address blocked due Suspicious Activity flagging.
+  </div>
+
+  <script src="admin_login.js"></script>
+</body>
+</html>

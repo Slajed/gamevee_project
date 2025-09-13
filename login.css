@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@689&display=swap');
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #232526, #485563, #007aff 90%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Outfit", sans-serif;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;   /* disable highlighting */
+}
+
+.login-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 28px;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+    padding: 40px 32px 32px 32px;
+    width: 350px;
+    max-width: 92vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box h2 {
+    color: #fff;
+    font-family: "Bebas Neue", Arial, sans-serif;
+    font-size: 2.1em;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    color: #e0e0e0;
+    font-size: 1em;
+    margin-bottom: 6px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.input-group input {
+    width: 320px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.18);
+    color: white;
+    font-size: 1em;
+    margin-top: 2px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.input-group input:focus {
+    background: rgba(255,255,255,0.28);
+    box-shadow: 0 4px 16px rgba(0,122,255,0.10);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 13px 0;
+    background: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.10);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.login-btn:hover {
+    background: #005ecb;
+    box-shadow: 0 4px 16px rgba(0,122,255,0.18);
+}
+
+.divider-text {
+    color: #bbb;
+    margin: 18px 0 10px 0;
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+.divider-text:before,
+.divider-text:after {
+    content: "";
+    display: inline-block;
+    width: 30%;
+    height: 1px;
+    background: rgba(255,255,255,0.18);
+    vertical-align: middle;
+    margin: 0 8px;
+}
+
+.social-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.social-btn {
+    width: 100%;
+    padding: 11px 0 11px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.22);
+    color: #222;
+    transition: background 0.18s, box-shadow 0.18s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.social-btn img {
+    width: 22px;
+    height: 22px;
+}
+.social-btn.apple {
+    background: #fff;
+    color: #111;
+}
+.social-btn.apple:hover {
+    background: #f5f5f5;
+}
+.social-btn.google {
+    background: #fff;
+    color: #222;
+    border: 1px solid #eee;
+}
+.social-btn.google:hover {
+    background: #f5f5f5;
+}
+.social-btn.facebook {
+    background: #1877f2;
+    color: #fff;
+}
+.social-btn.facebook:hover {
+    background: #145db2;
+}
+
+.social-login .apple1 {
+    position: absolute;
+    left: 113px
+}
+
+.social-login .google1 {
+    position: absolute;
+    left: 113px
+}
+
+.signup-link {
+    color: #eee;
+    font-size: 1em;
+    margin-top: 10px;
+    text-align: center;
+}
+.signup-link a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: filter 0.3s ease-in-out;
+}
+.signup-link a:hover {
+    filter: brightness(75%);
+}
+
+/* Notification box with glass effect */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification.hide {
+    filter: brightness(0%);
+}
+
+.notification2 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification2.show {
+    opacity: 1;
+}
+
+.notification2.hide {
+    filter: brightness(0%);
+}
+
+
+.notification3 {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.4); /* semi-transparent for glass effect */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Outfit", sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease, backdrop-filter 0.7s ease;
+    z-index: 9999;
+
+    /* Glassmorphism blur */
+    backdrop-filter: blur(8px);  /* blur what's behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border for glass look */
+
+}
+
+.notification3.show {
+    opacity: 1;
+}
+
+.notification3.hide {
+    filter: brightness(0%);
+}
+
+
+
+/* Responsive */
+@media (max-width: 800px) {
+    .login-box {
+        padding: 24px 6vw 24px 6vw;
+        width: 98vw;
+        min-width: unset;
+    }
+    .login-box h2 {
+        font-size: 1.3em;
+    }
+}
